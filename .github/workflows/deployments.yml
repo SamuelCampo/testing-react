@@ -8,7 +8,7 @@ on:
       - main
 jobs:
   testing:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js 18.x
@@ -22,7 +22,7 @@ jobs:
       - name: Build artifacts
         run: npm run build
   deployment:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
 
     needs: testing
     steps:
