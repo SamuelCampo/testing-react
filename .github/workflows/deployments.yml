@@ -38,13 +38,13 @@ jobs:
     - name: Build artifacts
       run: npm run build
     - name: Deploy to Server
-      uses: easingthemes/ssh-deploy@main
-      env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
-          ARGS: "-rlgoDzvc -i --delete"
-          SOURCE: "dist/"
-          REMOTE_HOST: ${{ secrets.HOST }}
-          REMOTE_USER: ${{ secrets.USERNAME }}
-          TARGET: ${{ secrets.DIR }}
-          EXCLUDE: "/dist/, /node_modules/"
+      uses: ErenKrt/ssh-push@main
+      with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          private_key: ${{ secrets.SSH_KEY }}
+          source: "dist/"
+          outdir: "/var/www/ayudamedica-api.aytec.com.co"
+          scripts: |
+            ls
 
